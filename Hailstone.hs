@@ -1,11 +1,18 @@
+-- http://rosettacode.org/wiki/Hailstone_sequence#Haskell
+
 import Data.List (maximumBy)
 import Data.Ord (comparing)
 
+-- The basic operation of the collatz sequence
+-- Takes an integer and returns an integer
+-- Either divives by 2 or multiplies by three and adds 1
 collatz :: Int -> Int
 collatz n
     | even n = n `div` 2
     | otherwise = 3 * n + 1
 
+-- A function to create the list of values in the sequence
+-- Takes an integer and returns an integer list
 hailstone :: Int -> [Int]
 hailstone = takeWhile (/= 1) . iterate collatz
 
