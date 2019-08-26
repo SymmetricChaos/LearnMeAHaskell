@@ -8,3 +8,19 @@ problem_1 = sort (union [3,6..999] [5,10..999])
 problem_2 = [ x | x <- takeWhile (<= 1000000) fibs, even x]
   where
     fibs = 1 : 1 : zipWith (+) fibs (tail fibs)
+
+-- Prime factorization
+-- List starts with 2 then goes throgh odd numbers filtering by
+--     the ones that have no tail portion for their list of prime 
+--     factors
+primes = 2 : filter (null . tail . primeFactors) [3,5..]
+
+
+primeFactors n = factor n primes
+  where
+    factor n (p:ps) 
+        | p*p > n        = [n]
+        | n `mod` p == 0 = p : factor (n `div` p) (p:ps)
+        | otherwise      =     factor n ps
+
+problem_3 = primeFactors 600851475143
