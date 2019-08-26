@@ -15,7 +15,7 @@ problem_2 = [ x | x <- takeWhile (<= 1000000) fibs, even x]
 --     factors
 primes = 2 : filter (null . tail . primeFactors) [3,5..]
 
-
+-- Prime factorization found recursively
 primeFactors n = factor n primes
   where
     factor n (p:ps) 
@@ -24,3 +24,7 @@ primeFactors n = factor n primes
         | otherwise      =     factor n ps
 
 problem_3 = primeFactors 600851475143
+
+-- Products of pairs of three digit numbers
+-- Then "show" is used to make it a string a reverse to check if it is a palindrome
+problem_4 = maximum [x | y<-[100..999], z<-[y..999], let x=y*z, let s=show x, s==reverse s]
