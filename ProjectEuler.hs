@@ -28,3 +28,33 @@ problem_3 = primeFactors 600851475143
 -- Products of pairs of three digit numbers
 -- Then "show" is used to make it a string a reverse to check if it is a palindrome
 problem_4 = maximum [x | y<-[100..999], z<-[y..999], let x=y*z, let s=show x, s==reverse s]
+
+-- Smallest number divisible by all numbers from 1 to 20
+problem_5 = foldr1 lcm [1..20]
+
+-- Sum of squares and square of sum for numbers from 1 to 100
+sqsum = (sum [1..100])^2
+sumsq= sum (map (^2) [1..100])
+problem_6 = (sqsum - sumsq)
+
+-- What is the ten-thousandth prime
+problem_7 = primes !! 10000
+
+
+problem_8 = do
+   str <- readFile "number.txt"
+   print . maximum . map product
+         . foldr (zipWith (:)) (repeat [])
+         . take 13 . tails . map (fromIntegral . digitToInt)
+         . concat . lines $ str
+
+
+triplets l = [[a,b,c] | m <- [2..limit],
+                        n <- [1..(m-1)], 
+                        let a = m^2 - n^2, 
+                        let b = 2*m*n, 
+                        let c = m^2 + n^2,
+                        a+b+c==l]
+    where limit = floor . sqrt . fromIntegral $ l
+
+problem_9 = product . head . triplets $ 1000
