@@ -1,6 +1,8 @@
 -- These aren't necessarily solutions to the exact questions asked 
 
 import Data.List (union, sort)
+import Data.Char (digitToInt)
+
 -- Numbers under 1000 that are divisible by 3 or 5 (or both) without repetition
 problem_1 = sort (union [3,6..999] [5,10..999])
 
@@ -46,10 +48,18 @@ problem_7 = primes !! 10000
 --    str <- readFile "number.txt"
 --    print . maximum . map product
 --          . foldr (zipWith (:)) (repeat [])
---          . take 13 . tails . map (fromIntegral . digitToInt)
+--          . take 13 . tail . map (fromIntegral . digitToInt)
 --          . concat . lines $ str
 
 
+problem_8 = do
+   str <- readFile "number.txt"
+   print . take 13 . map (fromIntegral . digitToInt) $ str
+
+-- uses Euler's forumula to create triples
+-- uses where to define a local variable to limit how many
+-- are returned
+-- the $ operator is used to make compoisition weakly binding
 triplets l = [[a,b,c] | m <- [2..limit],
                         n <- [1..(m-1)], 
                         let a = m^2 - n^2, 
