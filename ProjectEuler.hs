@@ -38,15 +38,16 @@ sumsq= sum (map (^2) [1..100])
 problem_6 = (sqsum - sumsq)
 
 -- What is the ten-thousandth prime
+-- The !! operator indexes a list, recall that "primes" is an infinite list
 problem_7 = primes !! 10000
 
 
-problem_8 = do
-   str <- readFile "number.txt"
-   print . maximum . map product
-         . foldr (zipWith (:)) (repeat [])
-         . take 13 . tails . map (fromIntegral . digitToInt)
-         . concat . lines $ str
+-- problem_8 = do
+--    str <- readFile "number.txt"
+--    print . maximum . map product
+--          . foldr (zipWith (:)) (repeat [])
+--          . take 13 . tails . map (fromIntegral . digitToInt)
+--          . concat . lines $ str
 
 
 triplets l = [[a,b,c] | m <- [2..limit],
