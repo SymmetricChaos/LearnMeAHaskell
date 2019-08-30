@@ -12,3 +12,11 @@ double x = 2*x
 primes = [ n | n <- [2..], all ((> 0) . rem n) [2..(n-1)] ]
 
 primesDouble = map double (take 20 primes)
+
+main :: IO()
+main =    
+    mapM_
+    putStrLn
+    ["some stuff"
+    , (show $ map double (take 20 primes))
+    ] 
