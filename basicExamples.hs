@@ -34,4 +34,6 @@ main =
     , show $ removeLower some_string
     , "\nzipWith (*) [1,2,3] [2,4,6]"
     , show $ zipWith (*) [1,2,3] [2,4,6]
+    , "\nzipWith (**) (repeat 5) [1..10]"
+    , show $ zipWith (**) (repeat 5) [1..10]
     ] 
