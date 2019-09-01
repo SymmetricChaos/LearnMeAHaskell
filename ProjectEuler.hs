@@ -1,7 +1,7 @@
 -- These aren't necessarily solutions to the exact questions asked 
 
-import Data.List (union, sort)
-import Data.Char (digitToInt)
+import Data.List
+import Data.Char
 
 -- Numbers under 1000 that are divisible by 3 or 5 (or both) without repetition
 problem_1 = sort (union [3,6..999] [5,10..999])
@@ -73,3 +73,30 @@ problem_9 = product . head . triplets $ 1000
 
 -- Sum up some primes
 problem_10 = sum (takeWhile (< 1000000) primes)
+
+
+-- import Control.Arrow
+-- import Data.Array
+
+-- input :: String -> Array (Int,Int) Int
+-- input = listArray ((1,1),(20,20)) . map read . words
+
+-- senses = [(+1) *** id,(+1) *** (+1), id *** (+1), (+1) *** (\n -> n - 1)]
+
+-- inArray a i = inRange (bounds a) i
+
+-- prods :: Array (Int, Int) Int -> [Int]
+-- prods a = [product xs | i <- range $ bounds a,
+--                         s <- senses,
+--                         let is = take 4 $ iterate s i,
+--                         all (inArray a) is,
+--                         let xs = map (a!) is]
+-- main = print . maximum . prods . input =<< getContents
+
+-- Triangular numbers
+triangle_numbers = scanl1 (+) [1..]
+num_divisors n = product $ map ((+1) . length) (group (primeFactors n))   
+problem_12 = head $ filter ((> 500) . num_divisors) triangle_numbers  
+
+
+problem_20 = sum $ map digitToInt $ show $ product [1..100]
