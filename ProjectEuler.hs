@@ -54,7 +54,8 @@ problem_7 = primes !! 10000
 
 problem_8 = do
    str <- readFile "number.txt"
-   print $ take 13 . tail . map (fromIntegral . digitToInt) $ str
+   print $ map (fromIntegral . digitToInt) $ str
+   print $ take 13 . map (fromIntegral . digitToInt) $ str
 
 -- uses Euler's forumula to create triples
 -- uses where to define a local variable to limit how many
