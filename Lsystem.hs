@@ -8,4 +8,9 @@ l_system :: String -> String
 l_system s = concatMap rule s
 
 main :: IO()
-main = putStrLn . show $ take 6 (iterate (l_system) "A")
+main = 
+    mapM_
+    putStrLn
+    [ "Original Lindenmayer system representing algae growth"
+    , show $ take 6 (iterate (l_system) "A")
+    ]
