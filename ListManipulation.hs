@@ -18,6 +18,8 @@ main =
     , show $ takeWhile (>3) [6,5,4,3,2,1,2,3,4,5,4,3,2,1]
     , "\ntakeWhile (/=7) [6,5,8,4,3,2,1,2,7,3,4,5,4,3,2,1]"
     , show $ takeWhile (/=7) [6,5,8,4,3,2,1,2,7,3,4,5,4,3,2,1]
+    , "\nbreak (==4) [1,2,3,4,5,6,7]"
+    , show $ break (==4) [1,2,3,4,5,6,7]
     , "\ntake 3 $ iterate (++ \"ha\") \"haha\""
     , show $ take 3 $ iterate (++ "ha") "haha"
     ]
