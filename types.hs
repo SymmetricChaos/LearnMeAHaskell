@@ -35,5 +35,6 @@ main =
     ,show $ me
     ,"\nage me"
     ,show $ age me
+    ,"\ndescribePerson me"
     ,show $ describePerson me
     ]
